@@ -2,13 +2,10 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const logoGenerator = require('./utils/logoGenerator.js');
-const shapes = require('./utils/shapes.js');
+const Shapes = require('./utils/shapes.js');
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
-
-const circle = `circle cx="150" cy="100" r="80"`;
-const square = `rect width="100" height="100"`;
-const triangle = ``;
+const Circle = require('./utils/shapes.js');
 
 // Create an array of questions for user input with Inquirer
 const questions = [
@@ -20,13 +17,19 @@ const questions = [
         },
         {
             type: 'list',
-            message: 'Please pick a shape.',
-            name: 'shape',
-            choices: [square, circle, triangle],
+            message: 'Please pick a text color',
+            name: 'textcolor',
+            choices: ['white', 'black', 'slategray', 'dodgerblue'],
         },
         {
             type: 'list',
-            message: 'Please pick a color',
+            message: 'Please pick a shape.',
+            name: 'shape',
+            choices: ['square', 'circle', 'triangle'],
+        },
+        {
+            type: 'list',
+            message: 'Please pick a color.',
             name: 'color',
             choices: ['green', 'blue', 'yellow', 'red', 'purple'],
         },
@@ -34,10 +37,12 @@ const questions = [
 
 // Function to write logo.svg file
 function writeToFile(fileName, data) {
+    process.chdir('logos');
     return fs.writeFileSync(fileName, data, err => {
         if (err) {
             return console.log(err);
-        } else console.log('logo Successfully Generated!');
+        };
+        console.log('Generated logo.svg');
     });
 }
 
