@@ -2,10 +2,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const logoGenerator = require('./utils/logoGenerator.js');
-const Shapes = require('./utils/shapes.js');
 const MaxLengthInputPrompt = require('inquirer-maxlength-input-prompt');
 inquirer.registerPrompt('maxlength-input', MaxLengthInputPrompt);
-const Circle = require('./utils/shapes.js');
 
 // Create an array of questions for user input with Inquirer
 const questions = [
