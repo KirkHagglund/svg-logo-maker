@@ -1,38 +1,26 @@
 // Creating a parent class constructor for various shape child classes.
 class Shapes {
-    constructor(name) {
-        this.name = name;
-    };
+  constructor(name) {
+    this.name = name;
+  };
   };
   
   class Circle extends Shapes {
-    constructor(name, cx, cy, r) {
-        super(name);
-        this.valueOne = cx;
-        this.valueTwo = cy;
-        this.valueThree = r;
+    renderShape(color) {
+      return `<circle cx="150" cy="110" r="80" fill="${color}"/>`
     };
   };
   
   class Square extends Shapes {
-    constructor(name, x, width, height) {
-      super(name);
-      this.valueOne = x;
-      this.valueTwo = width;
-      this.valueThree = height;
+    renderShape(color) {
+      return `<rect x="50" width"200" height="200" fill="${color}"/>`
     };
   };
   
   class Triangle extends Shapes {
-    constructor(name, points, stroke, width) {
-      super(name);
-      this.valueOne = points;
-      this.valueTwo = stroke;
-      this.valueThree = width;
+    renderShape(color) {
+      return `<polygon points="25,50 275,50 150,200" stroke="none" stroke-width="0" fill="${color}"/>`
     };
   };
 
-module.exports = Shapes;
-module.exports = Circle;
-module.exports = Square;
-module.exports = Triangle;
+module.exports = { Circle, Square, Triangle };
